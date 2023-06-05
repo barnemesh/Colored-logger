@@ -1,0 +1,13 @@
+[project]
+name = "colored_logger"
+version = "0.1.0"
+description = "A Python package that provides a colored logger"
+dependencies = [
+    "termcolor"
+]
+
+[metadata]
+url = "https://github.com/barnemesh/Colored-logger"
+author = "Bar Nemesh"
+author_email = "barnemesh@gmail.com"
+
