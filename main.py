@@ -1,9 +1,8 @@
 import logging
-from pathlib import Path
 
 from loggers import SUCCESS, get_logger
 
-logger = get_logger(Path(__file__).stem)
+logger = get_logger(__file__)
 
 if __name__ == '__main__':
     logger.log(logging.NOTSET, "NOSET")

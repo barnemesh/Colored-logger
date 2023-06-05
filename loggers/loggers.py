@@ -1,5 +1,6 @@
 import logging
 from logging.config import dictConfig
+from pathlib import Path
 
 main_logger = logging.getLogger("main")
 
@@ -31,6 +32,9 @@ dictConfig(LOGGING_CONFIG)
 
 
 def get_logger(name):
+    p = Path(name)
+    if p.exists():
+        name = p.stem
     logger = main_logger.getChild(name)
     return logger
 

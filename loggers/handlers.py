@@ -11,7 +11,7 @@ LEVEL_TO_COLOR = {
     SUCCESS: ('white', 'on_green', ['bold', 'blink']),
     logging.WARNING: ('yellow', None, ['bold']),
     logging.ERROR: ('red', None, ['bold']),
-    logging.CRITICAL: ('red', 'on_white', ['bold', 'blink']),
+    logging.CRITICAL: ('red', 'on_white', ['bold', 'blink', 'underline']),
 }
 
 
