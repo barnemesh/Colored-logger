@@ -16,7 +16,7 @@ LOGGING_CONFIG = {
         'console': {
             'level': 'DEBUG',
             'formatter': 'standard',
-            '()': 'loggers.ColorHandler',
+            'class': 'loggers.ColorHandler',
             'stream': 'ext://sys.stdout',
         },
     },
