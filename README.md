@@ -1,0 +1,1 @@
+# Python Colored logger tests
