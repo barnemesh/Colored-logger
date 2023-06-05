@@ -1,1 +1,2 @@
-# Python Colored logger tests
+# Python Colored logger  
+Testing using colored logs, workflow and package building.
