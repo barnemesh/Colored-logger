@@ -16,6 +16,10 @@ LEVEL_TO_COLOR = {
 
 
 def get_colored_params(record):
+    return LEVEL_TO_COLOR.get(record.levelno, get_color_for_unknown_level(record))
+
+
+def get_color_for_unknown_level(record):
     last_key = LEVEL_TO_COLOR[logging.NOTSET]
     for key in LEVEL_TO_COLOR.keys():
         if key <= record.levelno:
