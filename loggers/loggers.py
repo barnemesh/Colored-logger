@@ -18,7 +18,7 @@ LOGGING_CONFIG = {
         'color_console': {
             'level': 'DEBUG',
             'formatter': 'standard',
-            '()': lambda: ColorHandler(),
+            '()': lambda *args, **kwargs: ColorHandler(*args, **kwargs),
             'stream': 'ext://sys.stdout',
         },
     },
