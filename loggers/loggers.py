@@ -2,6 +2,8 @@ import logging
 from logging.config import dictConfig
 from pathlib import Path
 
+from loggers import ColorHandler
+
 main_logger = logging.getLogger("main")
 
 LOGGING_CONFIG = {
@@ -9,21 +11,22 @@ LOGGING_CONFIG = {
     'disable_existing_loggers': False,
     'formatters': {
         'standard': {
-            'format': '%(asctime)s [%(levelname)s] %(name)s.%(lineno)d: %(message)s'
+            'format': '[%(asctime)s.%(msecs)03d] %(levelname)-7s %(message)s [%(name)s.%(module)s:%(lineno)d]'
         },
     },
     'handlers': {
-        'console': {
+        'color_console': {
             'level': 'DEBUG',
             'formatter': 'standard',
-            'class': 'loggers.ColorHandler',
+            '()': lambda: ColorHandler(),
             'stream': 'ext://sys.stdout',
         },
     },
     'loggers': {
         'main': {
-            'handlers': ['console'],
+            'handlers': ['color_console'],
             'level': 'DEBUG',
+            'propegate': False  # This is if any other package calls logging.basicConfig(), or changes the root
         },
     }
 }
