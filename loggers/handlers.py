@@ -2,13 +2,14 @@ import logging
 
 from termcolor import colored
 
-SUCCESS = 25
+class CustomLevels(IntEnum):
+    SUCCESS = 25
 
 LEVEL_TO_COLOR = {
     logging.NOTSET: ('grey', None, None),
     logging.DEBUG: ('blue', None, None),
     logging.INFO: ('white', None, None),
-    SUCCESS: ('white', 'on_green', ['bold', 'blink']),
+    CustomLevels.SUCCESS: ('white', 'on_green', ['bold', 'blink']),
     logging.WARNING: ('yellow', None, ['bold']),
     logging.ERROR: ('red', None, ['bold']),
     logging.CRITICAL: ('red', 'on_white', ['bold', 'blink', 'underline']),
@@ -32,5 +33,7 @@ def get_color_for_unknown_level(record):
 class ColorHandler(logging.StreamHandler):
 
     def emit(self, record: logging.LogRecord) -> None:
+        if record.levelno in iter(CustomLevels):
+            record.levelname = CustomLevels(record.levelno).name
         record.msg = colored(record.msg, *get_colored_params(record))
         super().emit(record)

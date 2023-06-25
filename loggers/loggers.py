@@ -2,9 +2,10 @@ import logging
 from logging.config import dictConfig
 from pathlib import Path
 
-from loggers import ColorHandler
+from loggers import ColorHandler, CustomLevels
 
 main_logger = logging.getLogger("main")
+logging.basicConfig()
 
 LOGGING_CONFIG = {
     'version': 1,
@@ -19,14 +20,12 @@ LOGGING_CONFIG = {
             'level': 'DEBUG',
             'formatter': 'standard',
             '()': ColorHandler,
-            'stream': 'ext://sys.stdout',
         },
     },
     'loggers': {
         'main': {
             'handlers': ['color_console'],
             'level': 'DEBUG',
-            'propegate': False  # This is if any other package calls logging.basicConfig(), or changes the root
         },
     }
 }
@@ -42,4 +41,4 @@ def get_logger(name):
     return logger
 
 
-main_logger.info("==== TEST ====")
+main_logger.log(CustomLevels.SUCCESS, "==== TEST ====")
