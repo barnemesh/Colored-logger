@@ -1,4 +1,5 @@
 import logging
+from enum import IntEnum
 
 from termcolor import colored
 
